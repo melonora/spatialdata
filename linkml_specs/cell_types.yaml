@@ -50,7 +50,7 @@ classes:
         description: markers used by researcher to indentify cell types
         range: string
         multivalued: true
-        inlined: true
+        inlined: false
 
 
   MarkerStatistics:
