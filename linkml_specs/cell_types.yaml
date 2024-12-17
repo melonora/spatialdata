@@ -1,0 +1,84 @@
+id: cell_type_summary_schema
+name: CellTypeSummarySchema
+description: A schema for summarizing cell type annotation information from an AnnData table.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  example: http://www.example.org/rdf#
+  EFO: http://identifiers.org/efo/
+default_prefix: example
+default_range: string
+imports:
+  - linkml:types
+
+classes:
+  CellTypeAnnotationSummary:
+    description: Represents the summarized information extracted from a table.
+    attributes:
+      cell_type_statistics:
+        description: Summary statistics for each cell type.
+        range: CellTypeStatistics
+        required: true
+        multivalued: true
+
+  CellTypeStatistics:
+    description: Summary statistics for a specific cell type.
+    attributes:
+      cell_type_information:
+        description: Cell type name and markers used to identify the cell type
+        required: true
+        range: CellType
+      total_cells:
+        description: Total number of cells annotated with this cell type.
+        required: true
+        range: integer
+      relative_abundance:
+        description: Proportion of cells with this type relative to the total cell count.
+        range: float
+      marker_statistics:
+        description: Summary of markers used to annotate this cell type.
+        range: MarkerStatistics
+        multivalued: true
+
+  CellType:
+    description: A cell type is a distinct morphological or functional form of cell. Examples are epithelial, glial etc.
+    class_uri: EFO:0000324
+    attributes:
+      cell_type_name:
+        description: name of the cell type. Not to be used as identifier as it can be subject to change.
+        range: string
+      marker_set:
+        description: markers used by researcher to indentify cell types
+        range: string
+        multivalued: true
+        inlined: true
+
+
+  MarkerStatistics:
+    description: Represents marker-based statistics for a cell type.
+    attributes:
+      marker_name:
+        description: Name of the marker.
+        range: string
+      inclusive_mean_expression:
+        description: Mean expression of the marker across all cells of type cell_type.
+        range: float
+      inclusive_expression_range:
+        description: Minimum and maximum expression of the marker across all cells of type cell_type.
+        range: ExpressionRange
+      exclusive_mean_expression:
+        description: Mean expression of the marker across all cells not of type marker_name.
+        range: float
+      exclusive_expression_range:
+        description: Minimum and maximum expression of the marker across all cells not of type marker_name
+        range: ExpressionRange
+
+
+  ExpressionRange:
+    description: Represents the range of expression values for a marker.
+    attributes:
+      min_expression:
+        description: Minimum expression value of the marker.
+        range: float
+      max_expression:
+        description: Maximum expression value of the marker.
+        range: float
