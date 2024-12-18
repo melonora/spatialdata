@@ -1,5 +1,5 @@
 # Auto generated from cell_types.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-12-17T14:29:34
+# Generation date: 2024-12-17T17:27:49
 # Schema: CellTypeSummarySchema
 #
 # id: cell_type_summary_schema

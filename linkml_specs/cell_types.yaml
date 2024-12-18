@@ -14,6 +14,11 @@ classes:
   CellTypeAnnotationSummary:
     description: Represents the summarized information extracted from a table.
     attributes:
+      table_col_id:
+        description: table column used for determining cell type identity
+        range: string
+        identifier: true
+        required: true
       cell_type_statistics:
         description: Summary statistics for each cell type.
         range: CellTypeStatistics
@@ -27,6 +32,7 @@ classes:
         description: Cell type name and markers used to identify the cell type
         required: true
         range: CellType
+        inlined: true
       total_cells:
         description: Total number of cells annotated with this cell type.
         required: true
