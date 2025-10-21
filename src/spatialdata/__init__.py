@@ -1,6 +1,4 @@
 import dask
-
-dask.config.set({"dataframe.query-planning": False})
 import dask.dataframe as dd
 
 # Setting `dataframe.query-planning` to False is effective only if run before `dask.dataframe` is initialized. In
