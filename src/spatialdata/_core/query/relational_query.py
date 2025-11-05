@@ -716,7 +716,7 @@ def _call_join(
     return elements_dict, table
 
 
-def match_table_to_element(sdata: SpatialData, element_name: str, table_name: str = "table") -> AnnData:
+def match_table_to_element(sdata: SpatialData, element_name: str, table_name: str) -> AnnData:
     """
     Filter the table and reorders the rows to match the instances (rows/labels) of the specified SpatialElement.
 
